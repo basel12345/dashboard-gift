@@ -1,0 +1,59 @@
+<section id="add-page" class="wow fadeIn">
+    <form action="" [formGroup]="addHost" (ngSubmit)="submit()">
+        <div class="d-flex align-items-center justify-content-between">
+            <h1 class="font">Add Host</h1>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Add Host</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mx-0 w-100 align-items-start">
+                    <div class="col-sm-12">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Name</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" placeholder="Name" formControlName="name" />
+                            </div>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Email</label>
+                            <div class="col-sm-4">
+                                <input type="email" class="form-control" placeholder="Email" formControlName="email" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">phone</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" placeholder="Phone" formControlName="phone" />
+                            </div>
+                            <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Country</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <select class="selectpicker show-tick form-control select2"
+                                        formControlName="country_id">
+                                        <option *ngFor="let res of countries" [value]="res.id">{{res.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">City</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <select class="selectpicker show-tick form-control select2"
+                                        formControlName="city_id">
+                                        <option *ngFor="let res of cities" [value]="res.id">{{res.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-end col-12 mt-4">
+                    <button [disabled]="addHost.invalid" class="btn btn-primary">
+                        Host
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

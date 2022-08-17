@@ -1,0 +1,37 @@
+<section id="pages" class="wow fadeIn">
+    <!-- Main content -->
+    <div class="row mx-0 w-100">
+        <div class="col-12 px-0">
+            <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="" class="table table-bordered table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>{{ gift?.name }}</td>
+                                    <td>
+                                        <img [src]="gift?.image" [alt]="gift?.image">
+                                    </td>
+                                    <td>{{ gift?.price }}</td>
+                                </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

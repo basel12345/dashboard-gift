@@ -1,0 +1,74 @@
+<section id="add-page" class="wow fadeIn">
+    <div class="d-flex align-items-center justify-content-between">
+        <h1 class="font">Add Page</h1>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Add Page</h3>
+        </div>
+        <div class="card-body">
+            <form action="" [formGroup]="pageForm" (ngSubmit)="submitPage(pageForm.value)">
+                <div class="row mx-0 w-100 align-items-start">
+                    <div class="col-sm-2">
+                        <label for="slide" class="font-bold mb-0 mt-2">Page title</label>
+                    </div>
+                    <div class="col-sm-10 w-100">
+                        <input type="text" class="form-control w-100" placeholder="Page title"
+                            formControlName="name_en" />
+                    </div>
+                    <div class="col-sm-2 mt-4">
+                        <label for="slide" class="font-bold mb-0 mt-2">Page Link</label>
+                    </div>
+                    <div class="col-sm-10 w-100 mt-4">
+                        <input type="text" class="form-control w-100" placeholder="Page Link" formControlName="url" />
+                    </div>
+                    <div class="col-sm-2 mt-4">
+                        <label for="slide" class="font-bold mb-0">Page Image</label>
+                    </div>
+                    <div class="col-sm-10 w-100 mt-4">
+                        <div class="row">
+                            <div class="col-4">
+                                <input #imageInput type="file" name="" id="" accept="image/*"
+                                    (change)="onUploadImage($event)" />
+                            </div>
+                            <div class="col-4" *ngIf="pageID || pageForm.controls.image.value">
+                                <img style="width: 40px; height: 40px;" [src]="imageUrl ? imageUrl : pageData?.image"
+                                    alt="">
+                            </div>
+                            <div class="col-4">
+                                <button (click)="removeIMG(imageInput)" *ngIf="pageForm.controls.image.value"
+                                    type="button" class="btn btn-danger btnsmall">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 mt-4">
+                        <label for="slide" class="font-bold mb-0 mt-4">Page Content</label>
+                    </div>
+                    <div class="col-sm-10 w-100 mt-4">
+                        <div [ngxSummernote]="config" formControlName="details_en"></div>
+                    </div>
+                    <div class="col-sm-4 w-100 mt-4">
+                        <label for="footer">Footer</label>
+                        <input #positionFooter [checked]="pageForm.controls.position.value === 'footer' || pageForm.controls.position.value === 'both'"
+                            (change)="getPostion('footer')" type="checkbox" name=""
+                            style="width: 78px; height: 20px; border: 1px solid #F2F2F2;">
+                    </div>
+                    <div class="col-sm-4 w-100 mt-4">
+                        <label for="header">Header</label>
+                        <input #positionHeader [checked]="pageForm.controls.position.value === 'header' || pageForm.controls.position.value === 'both'"
+                            (change)="getPostion('header')" type="checkbox" name=""
+                            style="width: 78px; height: 20px; border: 1px solid #F2F2F2;">
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-end col-12 mt-4">
+                    <button [disabled]="pageForm.invalid" class="btn btn-primary">
+                        {{ editMode ? "Edit" : "Add" }} Page
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

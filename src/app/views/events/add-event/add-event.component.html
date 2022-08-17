@@ -1,0 +1,170 @@
+<section id="add-page" class="wow fadeIn">
+  <form action="" [formGroup]="eventForm" (ngSubmit)="submitEvent(eventForm.value)">
+    <div class="d-flex align-items-center justify-content-between">
+      <h1 class="font">Add Event</h1>
+    </div>
+
+    <div class="card">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h3 class="card-title">Event Basic Info</h3>
+        <div class="col-sm-3" *ngIf="id === '0' || id === '2'">
+          <div class="form-group clearfix">
+            <div class="icheck-danger d-inline">
+              <input type="radio" id="radioPrimary2" name="r1" checked value="private"
+                [checked]="event?.type === 'private' || id === '2'" (change)="getEventType($event.target.value)" />
+              <label for="radioPrimary2"> Private event </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3" *ngIf="id === '0' || id === '1'">
+          <div class="form-group clearfix">
+            <div class="icheck-danger d-inline">
+              <input type="radio" id="radioPrimary3" name="r1" value="public"
+                [checked]="event?.type === 'public' || id === '1'" (change)="getEventType($event.target.value)" />
+              <label for="radioPrimary3"> Public event </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row mx-0 w-100 align-items-start">
+          <div class="col-sm-12">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Event Name</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="Event Name" formControlName="name_en" />
+              </div>
+              <label *ngIf="eventForm.controls.password" for="inputEmail3"
+                class="col-sm-2 col-form-label font-bold">Event Password</label>
+              <div class="col-sm-4" *ngIf="eventForm.controls.password">
+                <input type="password" class="form-control" placeholder="Event Password" formControlName="password" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Event Date</label>
+              <div class="col-sm-4">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                  </div>
+                  <input type="date" class="form-control" data-inputmask-alias="datetime" formControlName="date"
+                    data-inputmask-inputformat="dd-mm-yyyy" data-mask />
+                </div>
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Event Category</label>
+              <div class="col-sm-4">
+                <select id="basic" class="selectpicker show-tick form-control select2" formControlName="category_id">
+                  <option>-Category-</option>
+                  <option *ngFor="let category of categories; let i = index" [value]="category.id">
+                    {{ category?.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-2">
+            <label for="slide" class="font-bold mb-0 mt-4 font-bold">Event description</label>
+          </div>
+          <div class="col-sm-10 w-100">
+            <div [ngxSummernote]="config" formControlName="description_en"></div>
+          </div>
+          <div class="col-sm-2 mt-4">
+            <label for="slide" class="font-bold mb-0">Event Image</label>
+          </div>
+          <div class="col-sm-10 w-100 mt-4">
+            <input #imageInput type="file" name="" id="" accept="image/*" (change)="onUploadImage($event)" />
+            <div class="row">
+              <div class="col-4" style="margin-top: 50px;">
+                <button
+                  style="position: absolute;background-color: red; right: 8px; top: -12px; z-index: 11111; border-radius: 50%; padding: 17px 9px; font-weight: 900;"
+                  (click)="removeIMG(imageInput)" *ngIf="eventForm.controls.image.value" type="button"
+                  class="btn btn-danger btnsmall">
+                  <i class="fa fa-times"></i>
+                </button>
+                <img *ngIf="imageUrl || event?.image" [src]="imageUrl? imageUrl: event?.image" [alt]="imageUrl ? imageUrl : event?.image" style="width: 100%; height: 180px; position: relative; z-index: 9; border: 1px solid #ccc; padding: 5px;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h3 class="card-title">Host Info</h3>
+      </div>
+      <div class="card-body">
+        <div class="row mx-0 w-100 align-items-start">
+          <div class="col-sm-12">
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Host Name</label>
+              <div class="col-sm-4">
+                <select class="selectpicker show-tick form-control select2" formControlName="host_name">
+                  <option *ngFor="let res of hosts" [value]="res.id">{{res.name}}</option>
+                </select>
+              </div>
+              <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Host Code</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" placeholder="N/A" formControlName="host_code" />
+                <span class="spantype">Type N/A in case you don't have one</span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">Country</label>
+              <div class="col-sm-4">
+                <div class="input-group">
+                  <select class="selectpicker show-tick form-control select2" formControlName="host_country_id">
+                    <option *ngFor="let res of countries" [value]="res.id">{{res.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label font-bold">City</label>
+              <div class="col-sm-4">
+                <select id="basic" class="selectpicker show-tick form-control select2" formControlName="host_city_id">
+                  <option *ngFor="let res of cities" [value]="res.id">{{res.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-2">
+            <label for="slide" class="font-bold mb-0 mt-4 font-bold">Address</label>
+          </div>
+          <div class="col-sm-10 w-100">
+            <textarea class="form-control" formControlName="host_address"></textarea>
+          </div>
+
+          <div class="col-sm-2 mt-4">
+            <label for="slide" class="font-bold mb-0">Allow card gift</label>
+          </div>
+          <div class="col-sm-3 mt-4">
+            <div class="form-group clearfix">
+              <div class="icheck-danger d-inline">
+                <input value="1" type="radio" id="radioPrimary4" name="r2" [checked]="event?.is_gift_card_allowed === 1"
+                  (change)="getCardGiftAllow($event.target.value)" />
+                <label for="radioPrimary4"> Yes </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 mt-4">
+            <div class="form-group clearfix">
+              <div class="icheck-danger d-inline">
+                <input type="radio" id="radioPrimary5" [checked]="event?.is_gift_card_allowed === 0" name="r2" value="0"
+                  (change)="getCardGiftAllow($event.target.value)" />
+                <label for="radioPrimary5"> No </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center justify-content-end col-12 mt-4">
+          <button [disabled]="eventForm.invalid" class="btn btn-primary">
+            {{ editMode ? "Edit" : "Add" }} Event
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

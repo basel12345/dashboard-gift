@@ -1,0 +1,321 @@
+<!-- Side Menu  -->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav="matSidenav" class="">
+        <button mat-button class="menu-button d-flex align-items-center mb-2 py-3 active bg-primary">
+            <i class="fa-solid fa-gift"></i>
+            <span class="font-light font-bigger ml-3">Git Shop</span>
+        </button>
+        <!-- Dashboard -->
+        <button mat-button class="menu-button d-flex align-items-center my-2" routerLink="/dashboard"
+            routerLinkActive="active">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span class="font ml-2">Dashboard</span>
+        </button>
+        <mat-divider></mat-divider>
+
+        <!-- Website Pages -->
+        <div id="accordion">
+            <div id="wesitePages">
+                <button mat-button class="menu-button d-flex align-items-center my-2 font" data-toggle="collapse"
+                    data-target="#collapseWebsitePage" aria-expanded="false" aria-controls="collapseWebsitePage"
+                    [ngClass]="{
+            active:
+              homePage.isActive ||
+              contactPage.isActive ||
+              aboutPage.isActive ||
+              otherPage.isActive
+          }">
+                    <i class="fa-solid fa-clone"></i>
+                    <span class="font ml-2">Website Pages</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="collapse" id="collapseWebsitePage" aria-labelledby="wesitePages" data-parent="#accordion">
+                <div class="sub-menu border-0 pl-3 p-0">
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/webpages/home"
+                        routerLinkActive="sub-active" #homePage="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Home</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/webpages/about"
+                        routerLinkActive="sub-active" #aboutPage="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">About</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/webpages/contact"
+                        routerLinkActive="sub-active" #contactPage="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Contact</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/webpages/pages"
+                        routerLinkActive="sub-active" #otherPage="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Other Pages</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <!-- Events -->
+        <div id="accordion">
+            <div id="events">
+                <button mat-button class="menu-button d-flex align-items-center my-2 font" data-toggle="collapse"
+                    data-target="#collapseEvents" aria-expanded="false" aria-controls="collapseEvents" [ngClass]="{
+            active:
+              categories.isActive ||
+              allEvents.isActive ||
+              publicEvents.isActive ||
+              privateEvents.isActive
+          }">
+                    <i class="fa-solid fa-calendar"></i>
+                    <span class="font ml-2">Events</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="collapse" id="collapseEvents" aria-labelledby="events" data-parent="#accordion">
+                <div class="sub-menu border-0 pl-3 p-0">
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/categories"
+                        routerLinkActive="sub-active" #categories="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Categories</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/events/0"
+                        routerLinkActive="sub-active" #allEvents="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">All Events</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/events/1"
+                        routerLinkActive="sub-active" #publicEvents="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Public Events</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/events/2"
+                        routerLinkActive="sub-active" #privateEvents="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Private Events</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <!-- Gifts -->
+        <div id="accordion">
+            <div id="gifts">
+                <button mat-button class="menu-button d-flex align-items-center my-2 font" data-toggle="collapse"
+                    data-target="#collapseGifts" aria-expanded="false" aria-controls="collapseGifts" [ngClass]="{
+            active: allGifts.isActive || cardGifts.isActive
+          }">
+                    <i class="fa-solid fa-gift"></i>
+                    <span class="font ml-2">Gifts</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="collapse" id="collapseGifts" aria-labelledby="gifts" data-parent="#accordion">
+                <div class="sub-menu border-0 pl-3 p-0">
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/gifts"
+                        routerLinkActive="sub-active" #allGifts="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">All Gifts</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/gifts/card-gift"
+                        routerLinkActive="sub-active" #cardGifts="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Card Gifts</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <!-- Users -->
+        <div id="accordion">
+            <div id="users">
+                <button mat-button class="menu-button d-flex align-items-center my-2 font" data-toggle="collapse"
+                    data-target="#collapseUsers" aria-expanded="false" aria-controls="collapseUsers"
+                    [ngClass]="{ active: hosts.isActive || participants.isActive }">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="font ml-2">Users</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="collapse" id="collapseUsers" aria-labelledby="users" data-parent="#accordion">
+                <div class="sub-menu border-0 pl-3 p-0">
+                    <button mat-button class="menu-button d-flex align-items-center font" routerLink="/hosts"
+                        routerLinkActive="sub-active" #hosts="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Hosts</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font"
+                        routerLink="/webpages/bluk-actions" routerLinkActive="sub-active"
+                        #participants="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Participants</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <!-- Reports -->
+        <div id="accordion">
+            <div id="reports">
+                <button mat-button class="menu-button d-flex align-items-center my-2 font" data-toggle="collapse"
+                    data-target="#collapseReports" aria-expanded="false" aria-controls="collapseReports" [ngClass]="{
+            active:
+              generalElements.isActive ||
+              advancedElements.isActive ||
+              editors.isActive ||
+              validation.isActive
+          }">
+                    <i class="fa-solid fa-file"></i>
+                    <span class="font ml-2">Reports</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="collapse" id="collapseReports" aria-labelledby="reports" data-parent="#accordion">
+                <div class="sub-menu border-0 pl-3 p-0">
+                    <button mat-button class="menu-button d-flex align-items-center font"
+                        routerLink="/webpages/add-page" routerLinkActive="sub-active"
+                        #generalElements="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">General Elements</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font"
+                        routerLink="/webpages/bluk-actions" routerLinkActive="sub-active"
+                        #advancedElements="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Advanced Elements</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font"
+                        routerLink="/webpages/pages-list" routerLinkActive="sub-active" #editors="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Editors</span>
+                    </button>
+                    <button mat-button class="menu-button d-flex align-items-center font"
+                        routerLink="/webpages/pages-list" routerLinkActive="sub-active" #validation="routerLinkActive">
+                        <i class="fa-regular fa-circle"></i>
+                        <span class="font ml-2">Validation</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <!-- Payments -->
+        <button mat-button class="menu-button d-flex align-items-center my-2 font" routerLink="/dashboard"
+            routerLinkActive="active">
+            <i class="fa-solid fa-money-bill"></i>
+            <span class="font ml-2">Payments</span>
+        </button>
+        <mat-divider></mat-divider>
+
+        <!-- Settings -->
+        <button mat-button class="menu-button d-flex align-items-center my-2 font" routerLink="/dashboard"
+            routerLinkActive="active">
+            <i class="fa-solid fa-gear"></i>
+            <span class="font ml-2">Settings</span>
+        </button>
+        <mat-divider></mat-divider>
+
+        <!-- Profile -->
+        <button mat-button class="menu-button d-flex align-items-center my-2 font" routerLink="/dashboard"
+            routerLinkActive="active">
+            <i class="fa-solid fa-circle-user"></i>
+            <span class="font ml-2">Profile</span>
+        </button>
+        <mat-divider></mat-divider>
+
+        <!-- Logout -->
+        <button mat-button class="menu-button d-flex align-items-center my-2 font" (click)="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span class="font ml-2">Logout</span>
+        </button>
+        <mat-divider></mat-divider>
+    </mat-sidenav>
+    <mat-sidenav-content class="d-flex flex-column">
+        <!-- Toolbar -->
+        <mat-toolbar>
+            <div class="w-100 d-flex align-items-center justify-content-between font">
+                <!-- Menu Toggle -->
+                <div class="w-100 d-flex align-items-center justify-content-between px-3 header-height">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <button mat-icon-button *ngIf="sidenav.mode !== 'over'" (click)="sidenav.toggle()">
+                                <i class="fa-solid fa-bars text-primary"></i>
+                            </button>
+                            <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+                                <i class="fa-solid fa-bars text-primary"></i>
+                            </button>
+                        </div>
+                        <span class="font text-primary">Go to site</span>
+                    </div>
+                    <div class="d-flex">
+                        <!-- Profile -->
+                        <div ngbDropdown class="d-inline-block pr-3">
+                            <button class="bg-transparent border-0" id="dropdownProfile" ngbDropdownToggle>
+                                <i class="fa-regular fa-bell text-primary"></i>
+                                <span class="notification-count font">15</span>
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownNotification">
+                                <div class="main-header">
+                                    <div class="header p-1 text-center">15 Notification</div>
+                                    <hr class="mt-1 mb-0" />
+                                </div>
+                                <ul class="list-unstyled user-actions mb-0 pointer">
+                                    <li class="d-flex align-items-center justify-content-between py-1 px-3"
+                                        [routerLink]="['/users/add-user']"
+                                        [queryParams]="{ id: user.id, editMode: true }">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa-solid fa-envelope"></i>
+                                            <span class="font ml-3">4 new messages</span>
+                                        </div>
+                                        <span class="text-muted">3 mins</span>
+                                    </li>
+                                    <hr class="mt-1 mb-0" />
+                                    <li class="d-flex align-items-center justify-content-between py-1 px-3"
+                                        [routerLink]="['/users/add-user']"
+                                        [queryParams]="{ id: user.id, editMode: true }">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa-solid fa-users"></i>
+                                            <span class="font ml-3">8 friend requests</span>
+                                        </div>
+                                        <span class="text-muted">12 hours</span>
+                                    </li>
+                                    <hr class="mt-1 mb-0" />
+                                    <li class="d-flex align-items-center justify-content-between py-1 px-3"
+                                        [routerLink]="['/users/add-user']"
+                                        [queryParams]="{ id: user.id, editMode: true }">
+                                        <div class="d-flex align-items-center">
+                                            <i class="fa-solid fa-file"></i>
+                                            <span class="font ml-3">3 new reports</span>
+                                        </div>
+                                        <span class="text-muted">2 days</span>
+                                    </li>
+                                </ul>
+                                <hr class="mt-1 mb-0" />
+                                <div class="main-header">
+                                    <div class="header pointer p-1 text-center">
+                                        See All Notifications
+                                    </div>
+                                    <hr class="mt-1 mb-0" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-toolbar>
+        <div class="content px-lg-3" style="height: 100vh; overflow-y: auto">
+            <router-outlet></router-outlet>
+        </div>
+        <div style="position:relative; bottom: 0">
+            <footer id="footer" class="d-flex align-items-center">
+                <p class="text-white pl-3">
+                    Copyright ©<span class="text-primary font-weight-bold">Rabab</span>. All rights reserved.
+                </p>
+            </footer>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

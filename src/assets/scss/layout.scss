@@ -1,0 +1,161 @@
+mat-toolbar {
+  padding: 0 !important;
+  border-bottom: 1px solid #d91522;
+  position: relative;
+  background: #fff !important;
+  z-index: 99;
+}
+
+.mat-drawer {
+  background: #000;
+  color: #fff;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.mat-drawer-side {
+  border-right: none !important;
+}
+
+mat-sidenav {
+  width: 250px;
+}
+
+.content {
+  margin: 16px;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+.menu-button {
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0 !important;
+  line-height: 30px !important;
+}
+
+.menu-button.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.sub-active {
+  color: #c2c7d0;
+  &:hover {
+    color: #fff;
+  }
+}
+
+mat-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: $primary;
+}
+
+.fa-chevron-right {
+  position: absolute;
+  right: 15px;
+  top: 30%;
+  transition: 0.7s all ease-in-out;
+}
+
+#accordion .menu-button[aria-expanded="true"] {
+  .fa-chevron-right {
+    transition: 0.7s all ease-in-out;
+    transform: rotate(-90deg);
+  }
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+// Mobile
+@media (min-width: 320px) and (max-width: 425px) {
+  mat-sidenav {
+    width: 245px;
+    padding: 16px;
+  }
+}
+
+// Tablet
+@media (min-width: 426px) and (max-width: 768px) {
+  mat-sidenav {
+    width: 245px;
+    padding: 16px;
+  }
+}
+
+.notification-count {
+  position: absolute;
+  background: $primary;
+  width: 18px;
+  border-radius: 0.25rem;
+  color: #fff;
+  height: 18px;
+  display: flex;
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  top: -4px;
+  left: 14px;
+}
+
+div[aria-labelledby="dropdownNotification"] {
+  max-width: 300px;
+  min-width: 280px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 18%);
+  padding: 0;
+}
+
+.header {
+  &:active {
+    background: #007bff;
+    color: #fff;
+  }
+  &:hover {
+    color: #16181b;
+    background: #f8f9fa;
+  }
+}
+
+.user-actions {
+  li {
+    color: #212529;
+    &:hover {
+      color: #16181b;
+      background: #f8f9fa;
+    }
+    &:focus {
+      background: #007bff;
+      color: #fff;
+      span {
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+mat-sidenav-content {
+  position: relative;
+  min-height: 100vh;
+}
+
+#footer {
+  background: #000;
+  width: 100%;
+  padding: 22px 0;
+  // position: absolute;
+  // bottom: 0;
+}
+
+.font-bigger {
+  font-size: 1.4rem;
+}
+
+.header-height {
+  height: 64px;
+}

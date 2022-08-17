@@ -1,0 +1,128 @@
+<section id="pages" class="wow fadeIn">
+    <section class="content-header">
+        <div class="">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Categories</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a routerLink="/categories/add-category" class="btn btn-danger">Add Category</a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <div class="row mx-0 w-100">
+    <div class="col-12 px-0">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">All Categories</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="dataTables_length" id="example1_length">
+            <div class="d-flex align-items-center justify-content-between">
+              <label class="d-flex align-items-center"
+                >Show
+                <select
+                  name="example1_length"
+                  aria-controls="example1"
+                  class="custom-select custom-select-sm form-control form-control-sm mx-2"
+                >
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                entries</label
+              >
+              <div class="d-flex align-items-center">
+                Search:
+                <input type="text" class="form-control ml-2" />
+              </div>
+            </div>
+          </div>
+          <table id="" class="table table-bordered table-striped mt-4">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Categories Name</th>
+                <th>Description</th>
+                <th>Edit/Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let category of categories; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                  {{ category.name }}
+                </td>
+                <td>
+                  <span [innerHTML]="category.description"></span>
+                </td>
+                <td>
+                  <a
+                    [routerLink]="['/categories/add-category']"
+                    [queryParams]="{ id: category.id }"
+                    class="btn btn-warning btnsmall mr-2"
+                    ><i class="fa fa-edit"></i
+                  ></a>
+                    <a (click)="deleteCategory(category)" class="btn btn-danger btnsmall"><i class="fa fa-trash"></i
+                  ></a>
+                    </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Delete/Edit</th>
+                        </tr>
+                    </tfoot>
+                    </table>
+                    <div class="row mx-0 justify-content-between align-items-center font">
+                        <div class="col-sm-12 col-md-5 pl-lg-0">
+                            <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                Showing {{ categories.length }} to {{ categories.length }} of {{ categories.length }} entries
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-7 d-flex justify-content-end pr-lg-0">
+                            <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                <ul class="pagination mb-0">
+                                    <li class="paginate_button page-item previous disabled" id="example1_previous">
+                                        <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a
+                    >
+                  </li>
+                  <li class="paginate_button page-item active">
+                    <a
+                      aria-controls="example1"
+                      data-dt-idx="1"
+                      tabindex="0"
+                      class="page-link"
+                      >1</a
+                    >
+                  </li>
+                  <li
+                    class="paginate_button page-item next disabled"
+                    id="example1_next"
+                  >
+                    <a
+                      aria-controls="example1"
+                      data-dt-idx="2"
+                      tabindex="0"
+                      class="page-link"
+                      >Next</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

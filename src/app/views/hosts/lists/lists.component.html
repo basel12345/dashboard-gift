@@ -1,0 +1,108 @@
+<section id="pages" class="wow fadeIn">
+    <section class="content-header">
+        <div class="">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>All Hosts</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a routerLink="/hosts/add" class="btn btn-danger">Add Host</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main content -->
+    <div class="row mx-0 w-100">
+        <div class="col-12 px-0">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">All Hosts</h3>
+                </div>
+                <div class="card-body">
+                    <div class="dataTables_length" id="example1_length">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="d-flex align-items-center">Show
+                                <select name="example1_length" aria-controls="example1"
+                                    class="custom-select custom-select-sm form-control form-control-sm mx-2">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                                entries</label>
+                            <div class="d-flex align-items-center">
+                                Search:
+                                <input type="text" class="form-control ml-2" />
+                            </div>
+                        </div>
+                    </div>
+                    <table id="" class="table table-bordered table-striped mt-4">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Country</th>
+                                <th>City</th>
+                                <th>Edit/Delete/View</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let res of hosts; let i = index;">
+                                <td>{{i + 1}}</td>
+                                <td>{{res.name}}</td>
+                                <td>{{res.email}}</td>
+                                <td>{{res.phone}}</td>
+                                <td>{{res.country.name}}</td>
+                                <td>{{res.city.name}}</td>
+                                <td>
+                                    <a [routerLink]="['/hosts/add']" [queryParams]="{ id: res.id }"
+                                        class="btn btn-warning btnsmall mr-1"><i class="fa fa-edit"></i></a>
+                                    <a (click)="deleteHost(res)" class="btn btn-danger btnsmall"><i
+                                            class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Country</th>
+                                <th>City</th>
+                                <th>Edit/Delete/View</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="row mx-0 justify-content-between align-items-center font">
+                        <div class="col-sm-12 col-md-5 pl-lg-0">
+                            <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                                Showing 1 to 3 of 3 entries
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-7 d-flex justify-content-end pr-lg-0">
+                            <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                <ul class="pagination mb-0">
+                                    <li class="paginate_button page-item previous disabled" id="example1_previous">
+                                        <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0"
+                                            class="page-link">Previous</a>
+                                    </li>
+                                    <li class="paginate_button page-item active">
+                                        <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0"
+                                            class="page-link">1</a>
+                                    </li>
+                                    <li class="paginate_button page-item next disabled" id="example1_next">
+                                        <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0"
+                                            class="page-link">Next</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

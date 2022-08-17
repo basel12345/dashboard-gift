@@ -1,0 +1,45 @@
+<section id="login" class="wow fadeIn pt-4">
+    <div class="container">
+        <div class="card py-lg-5 p-3 text-center">
+            <div class="row w-100 mx-0">
+                <div class="col-lg-4 my-3 mx-auto">
+                    <h2 class="font-weight-bold">Login</h2>
+                    <p>Please Login</p>
+                    <form [formGroup]="loginForm" class="mt-5" (ngSubmit)="onLogin(loginForm.value)">
+                        <!-- Email admin@admin.com-->
+                        <mat-form-field appearance="fill" class="w-100 wow fadeIn">
+                            <mat-label>Email address</mat-label>
+                            <input matInput placeholder="Email address" type="email" required formControlName="email" />
+                            <!-- Email Validation -->
+                            <mat-hint class="text-danger" *ngIf="loginForm.controls.email.touched">
+                                <span *ngIf="loginForm.controls.email.errors?.required">
+                  This field is required!
+                </span>
+                                <span *ngIf="loginForm.controls.email.errors?.pattern">
+                  Invalid Email
+                </span>
+                            </mat-hint>
+                        </mat-form-field>
+                        <!-- Password 123456-->
+                        <mat-form-field appearance="fill" class="w-100 mt-3 wow fadeIn">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Password" type="password" required formControlName="password" />
+                            <!-- Password Validation -->
+                            <mat-hint class="text-danger" *ngIf="loginForm.controls.password.touched">
+                                <span *ngIf="loginForm.controls.password.errors?.required">
+                  This field is required!
+                </span>
+                                <span *ngIf="loginForm.controls.password.errors?.minlength">
+                  Please enter at least 6 characters
+                </span>
+                            </mat-hint>
+                        </mat-form-field>
+                        <button class="btn btn-primary w-100 mt-4 wow fadeIn" [disabled]="loginForm.invalid">
+              Login
+            </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

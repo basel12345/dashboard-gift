@@ -1,0 +1,14 @@
+.btnsmall {
+    padding: 5px !important;
+    font-size: 0.8rem !important;
+    &:hover {
+        color: none;
+    }
+}
+
+.btn-primary-def {
+    background: #007bff !important;
+    i {
+        color: #fff;
+    }
+}

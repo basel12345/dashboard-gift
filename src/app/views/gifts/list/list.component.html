@@ -1,0 +1,125 @@
+<section id="pages" class="wow fadeIn">
+  <section class="content-header">
+    <div class="">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>All Gifts</h1>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <div class="row mx-0 w-100">
+    <div class="col-12 px-0">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">All Events</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+          <div class="dataTables_length" id="example1_length">
+            <div class="d-flex align-items-center justify-content-between">
+              <label class="d-flex align-items-center">Show
+                <select name="example1_length" aria-controls="example1"
+                  class="custom-select custom-select-sm form-control form-control-sm mx-2">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                entries</label>
+              <div class="d-flex align-items-center">
+                Search:
+                <input type="text" class="form-control ml-2" />
+              </div>
+            </div>
+          </div>
+          <table id="" class="table table-bordered table-striped mt-4">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Gift name</th>
+                <th>Gift image</th>
+                <th>Event name</th>
+                <th>Gift price</th>
+                <th>Event category</th>
+                <th>Event type</th>
+                <th>Event date</th>
+                <th>Host name</th>
+                <th>Gift type</th>
+                <th>Edit/Delete/View</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let gift of gifts; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ gift.name }}</td>
+                <td>
+                  <img [src]="gift.image" [alt]="gift.image">
+                <td>
+                  <a [href]="env + 'api/v1/dashboard/events/' + gift.event.id">{{ gift.event.name }}</a>
+                </td>
+                <td>{{ gift.price }}</td>
+                <td>{{gift.event.category.name}}</td>
+                <td>
+                  <span class="event-type"
+                    [ngStyle]="{'background-color': gift.event.type === 'public' ? '#28a745' : '#d91522' }">{{gift.event.type}}</span>
+                </td>
+                <td>{{gift.event.date}}</td>
+                <td>{{gift.event.host_name}}</td>
+                <td>
+                  <span class="event-type"
+                    [ngStyle]="{'background-color': gift.status ? '#28a745' : '#d91522' }">{{gift.status ? 'Available' :
+                    'Sold'}}</span>
+                </td>
+                <td>
+                  <a [routerLink]="['/gifts/add-gift']" [queryParams]="{ id: gift.id }"
+                    class="btn btn-warning btnsmall mr-2" style="margin-right: 0.5rem !important;"><i class="fa fa-edit"></i></a>
+                  <a (click)="deleteGift(gift)" class="btn btn-danger btnsmall"><i class="fa fa-trash"></i></a>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>#</th>
+                <th>Gift name</th>
+                <th>Gift image</th>
+                <th>Event name</th>
+                <th>Gift price</th>
+                <th>Event category</th>
+                <th>Event type</th>
+                <th>Event date</th>
+                <th>Host name</th>
+                <th>Gift type</th>
+                <th>Edit/Delete/View</th>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="row mx-0 justify-content-between align-items-center font">
+            <div class="col-sm-12 col-md-5 pl-lg-0">
+              <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">
+                Showing 1 to 3 of 3 entries
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-7 d-flex justify-content-end pr-lg-0">
+              <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                <ul class="pagination mb-0">
+                  <li class="paginate_button page-item previous disabled" id="example1_previous">
+                    <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                  </li>
+                  <li class="paginate_button page-item active">
+                    <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                  </li>
+                  <li class="paginate_button page-item next disabled" id="example1_next">
+                    <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

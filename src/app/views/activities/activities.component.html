@@ -1,0 +1,99 @@
+<section id="dashboard" class="wow fadeIn">
+  <!-- BreadCurme -->
+  <div class="breadcurme d-flex align-items-center play-font">
+    <mat-icon>help</mat-icon>
+    <div>
+      <span class="ml-2 font-weight-bold" routerLink="/activities"
+        >Activites Log</span
+      >
+    </div>
+  </div>
+  <div class="">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      matSort
+      class="mat-elevation-z8 w-100 play-font"
+    >
+      <ng-container matColumnDef="user.id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>User ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.user.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="user.name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Username</th>
+        <td mat-cell *matCellDef="let element" class="text-capitalize">
+          {{ element.user.name }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+        <td mat-cell *matCellDef="let element">
+          <div
+            class="action-status d-inline-block"
+            [ngClass]="
+              element.action === 'create'
+                ? 'green'
+                : element.action === 'update'
+                ? 'orange'
+                : 'red'
+            "
+          >
+            <span class="text-capitalize">{{ element.action }} </span>
+            <span class="text-capitalize">{{ element.changes.name }} Page</span>
+          </div>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="changes.status">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="fill" class="my-3 play-font">
+            <mat-label>Page Status</mat-label>
+            <mat-select (selectionChange)="filterStatus($event)">
+              <mat-option value="">All</mat-option>
+              <mat-option *ngFor="let status of statusArray" [value]="status">
+                <span class="text-capitalize">{{ status }}</span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <span
+            class="status-table"
+            [ngClass]="
+              element.changes.status == '0' && element.action != 'delete'
+                ? 'padding'
+                : element.changes.status == '1' && element.action != 'delete'
+                ? 'published'
+                : element.action == 'delete'
+                ? 'deleted'
+                : 'expired'
+            "
+            >{{
+              element.changes.status == "0" && element.action != "delete"
+                ? "Pending"
+                : element.changes.status == "1" && element.action != "delete"
+                ? "Published"
+                : element.action == "delete"
+                ? "Deleted"
+                : "Expired"
+            }}</span
+          >
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.date | date: "dd MMMM YYYY hh:mm:ss" }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      class="play-font"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+  </div>
+</section>
